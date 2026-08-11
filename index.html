@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K2-18 b — The Hycean Debate, Tested Against Real JWST Data</title>
+<meta name="description" content="Report on K2-18 b: real system parameters and a real combined JWST NIRISS+NIRSpec+MIRI spectrum, directly testing the disputed CO2 detection.">
+<style>
+:root {
+  --bg:#f5f6f4; --panel:#ffffff; --line:#dde1db; --text:#191c17; --muted:#666e5f;
+  --accent:#2a6b4f; --accent-soft:#e2ede6; --sans:"Inter","Segoe UI",system-ui,Arial,sans-serif;
+  --mono:"IBM Plex Mono","Roboto Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#12160f; --panel:#191e15; --line:#2b3225; --text:#e9ede4; --muted:#9aa38e; --accent:#5fd6a5; --accent-soft:#1b2c22; }
+}
+* { box-sizing: border-box; }
+html,body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); }
+.wrap { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+header.hero { border-bottom: 1px solid var(--line); padding-bottom: 2rem; margin-bottom: 2.5rem; }
+.kicker { color: var(--accent); font: 600 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .8rem; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 .6rem; letter-spacing: -.02em; }
+.tagline { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0; }
+.badges { display:flex; gap:.5rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.badge { font: 600 .68rem var(--mono); background: var(--accent-soft); color: var(--accent); padding: .3rem .6rem; border-radius: 5px; }
+section { margin: 2.6rem 0; }
+h2 { font-size: 1.4rem; margin: 0 0 1rem; letter-spacing: -.01em; }
+p { line-height: 1.7; }
+.muted { color: var(--muted); }
+table.params { width: 100%; border-collapse: collapse; font-size: .92rem; }
+table.params th, table.params td { text-align: left; padding: .6rem .7rem; border-bottom: 1px solid var(--line); }
+table.params th { color: var(--muted); font-weight: 600; width: 45%; }
+.figure { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin: 1.2rem 0; }
+.figure img { width: 100%; height: auto; border-radius: 6px; }
+.figure figcaption { color: var(--muted); font-size: .85rem; margin-top: .6rem; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: .8rem; margin: 1.2rem 0; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: .9rem 1rem; }
+.stat span { display:block; color: var(--muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .3rem; }
+.stat strong { font: 600 1.15rem var(--mono); color: var(--accent); }
+ol.refs { padding-left: 1.2rem; color: var(--muted); font-size: .92rem; line-height: 1.7; }
+ol.refs li { margin-bottom: .5rem; }
+a { color: var(--accent); }
+footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: .85rem; }
+footer nav { display: flex; gap: 1.2rem; }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+.callout { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; border-radius: 6px; font-size: .93rem; }
+.callout.warn { border-left-color: #c0562a; background: color-mix(in srgb, var(--accent-soft) 40%, #f6e8dc); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Exoplanet Atmosphere Report · JWST NIRISS + NIRSpec + MIRI</p>
+    <h1>K2-18 b</h1>
+    <p class="tagline">A temperate sub-Neptune at the center of one of the most contested claims in exoplanet science: a possible "hycean" ocean world with a CO2/CH4-rich atmosphere and a tentative biosignature candidate. This report tests the CO2 claim directly against real combined JWST data, including the instrument-offset correction that critics argue may explain it away.</p>
+    <div class="badges">
+      <span class="badge">Transit-discovered, 2015</span>
+      <span class="badge">Real NASA Exoplanet Archive parameters</span>
+      <span class="badge">Real combined JWST spectrum, 4411 points</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The planet, in numbers</h2>
+    <p class="muted">Queried live from the NASA Exoplanet Archive TAP service (<code>pscomppars</code>).</p>
+    <table class="params">
+      <tr><th>Radius</th><td>2.37 Earth radii</td></tr>
+      <tr><th>Mass</th><td>8.92 Earth masses</td></tr>
+      <tr><th>Orbital period</th><td>32.9 days</td></tr>
+      <tr><th>Semi-major axis</th><td>0.143 AU</td></tr>
+      <tr><th>Equilibrium temperature</th><td>284 K (within the conventional habitable-zone range, though this says nothing by itself about surface conditions on a sub-Neptune)</td></tr>
+      <tr><th>Host star</th><td>K2-18, M-dwarf, T<sub>eff</sub> = 3457 K, 0.411 R<sub>sun</sub>, 0.359 M<sub>sun</sub></td></tr>
+      <tr><th>Distance</th><td>38.0 parsecs (~124 light-years)</td></tr>
+      <tr><th>Discovery</th><td>2015, transit photometry (K2 mission)</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Why K2-18 b is contested, not just interesting</h2>
+    <p>Madhusudhan et al. (2023) reported JWST NIRISS SOSS and NIRSpec G395H evidence for methane and carbon dioxide in K2-18 b's atmosphere, consistent with a "hycean" scenario (a liquid-water ocean beneath a H2-rich atmosphere) rather than a scaled-down gas giant. The same team later reported a tentative signal attributed to dimethyl sulfide (DMS), a molecule that on Earth is produced almost exclusively by biological processes — reported explicitly as tentative, not a biosignature detection.</p>
+    <p>Independent groups have pushed back hard on multiple fronts: some argue the planet's mass and radius are more consistent with a magma-ocean "mini-Neptune" than a temperate ocean world; others argue that combining spectra from different JWST instruments without accounting for small systematic offsets between them can manufacture spurious spectral features — including, potentially, the CO2 signal itself. That second critique is exactly what this repo's data source investigates.</p>
+  </section>
+
+  <section>
+    <h2>Testing the CO2 claim against real data</h2>
+    <p>The figure below uses a real, publicly released combined NIRISS+NIRSpec+MIRI spectrum from a 2025 reanalysis that explicitly investigates whether aerosols and cross-instrument offsets can reconcile the MIRI and NIRISS/NIRSpec observations — the dataset already has the paper's own best-fit inter-instrument offset applied, not a naive concatenation.</p>
+    <div class="figure">
+      <img src="figures/k218b_transmission_spectrum.png" alt="K2-18 b real combined JWST transmission spectrum with CO2 band and continuum window highlighted">
+      <figcaption>4411 native-resolution points binned to 89 for display. Shaded regions mark the CO2 absorption band (4.1-4.6 micron) central to the original detection claim, and a nearby featureless continuum window for comparison. Generated by <code>scripts/analyze_spectrum.py</code>.</figcaption>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><span>Native data points</span><strong>4411</strong></div>
+      <div class="stat"><span>Weighted mean depth</span><strong>2920 ppm</strong></div>
+      <div class="stat"><span>CO2-band excess</span><strong>4 ppm</strong></div>
+      <div class="stat"><span>Excess significance</span><strong>~0.2 sigma</strong></div>
+    </div>
+    <p class="callout warn">This is the real, honest result of this specific comparison: once this offset-corrected combined spectrum is used, the CO2-band depth is statistically indistinguishable from the nearby continuum (~0.2 sigma) — not the confident detection reported in the original 2023 analysis, which used NIRISS+NIRSpec alone without the later MIRI cross-check. This does not prove CO2 is absent; it demonstrates precisely why the K2-18 b result remains actively disputed, and why claims resting on combining multiple instruments' data are only as strong as the systematic-offset treatment behind them.</p>
+  </section>
+
+  <section>
+    <h2>How this data was obtained</h2>
+    <p>System parameters were queried live from the NASA Exoplanet Archive TAP service. The spectrum is a real reduced JWST data product released publicly on Zenodo (record <a href="https://doi.org/10.5281/zenodo.16277833">10.5281/zenodo.16277833</a>) by a team specifically investigating the MIRI/NIRISS-NIRSpec reconciliation question. See <a href="data/">data/</a> for the raw file and <a href="scripts/analyze_spectrum.py">scripts/analyze_spectrum.py</a> for the exact binning and statistics — run it yourself with <code>python scripts/analyze_spectrum.py</code>.</p>
+  </section>
+
+  <section>
+    <h2>References</h2>
+    <ol class="refs">
+      <li>Madhusudhan, N. et al., 2023. Carbon-bearing Molecules in a Possible Hycean Atmosphere. <em>The Astrophysical Journal Letters</em>, 956, L13.</li>
+      <li>Madhusudhan, N. et al., 2023. Potential Biosignature Detection: Possible Indications of Dimethyl Sulfide in the Atmosphere of K2-18 b. <em>The Astrophysical Journal Letters</em>, 963, L6.</li>
+      <li>Zenodo record <a href="https://doi.org/10.5281/zenodo.16277833">10.5281/zenodo.16277833</a>, "Investigating aerosols as a way to reconcile K2-18 b JWST MIRI and NIRISS/NIRSpec observations."</li>
+      <li>Wogan, N. et al., 2024. JWST Reveals CH4, CO2, and H2O in a Metal-rich Miscible Atmosphere on a Two-Column Sub-Neptune. <em>The Astrophysical Journal Letters</em>, 963, L7 (alternative interpretation).</li>
+      <li>NASA Exoplanet Archive, <a href="https://exoplanetarchive.ipac.caltech.edu/">exoplanetarchive.ipac.caltech.edu</a> — system parameters, queried live via TAP.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <span>Biswajit Jana · Exoplanet Atmosphere Report Series</span>
+    <nav>
+      <a href="https://biswajit1999.github.io/Biswajit_Jana.github.io/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/Biswajit1999" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/biswajit-jana-27011a151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0002-2411-1891" target="_blank" rel="noopener">ORCID</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+quantity,value,unit
+n_native_points,4411,count
+n_binned_points,89,count
+wavelength_min,0.852,micron
+wavelength_max,5.174,micron
+weighted_mean_depth,2919.5,ppm
+weighted_mean_depth_error,3.99,ppm
+co2_band_mean_depth,2925.3,ppm (4.1-4.6 micron)
+continuum_mean_depth,2921.3,ppm (3.6-3.9 micron)
+co2_band_excess,4.1,ppm
+co2_band_excess_significance,0.18,sigma
