@@ -4,25 +4,25 @@ The most contested atmosphere in exoplanet science right now: a temperate
 sub-Neptune with a disputed CO2/CH4 detection, a tentative and unconfirmed
 DMS signal, and a live debate about whether combining data from different
 JWST instruments manufactures the very feature it claims to find. This repo
-tests that debate directly against real, offset-corrected combined data.
+runs a simple band-vs-continuum test against an offset-corrected combined
+spectrum and is explicit about what that test can and can't establish.
 
 **[Open the full report](index.html)** (open locally in a browser, or serve
 with `python -m http.server` from this directory).
 
-## What's real here
+## Data sources
 
-- **System parameters** — queried live from the NASA Exoplanet Archive TAP
+- **System parameters** — from the NASA Exoplanet Archive TAP
   service (`pscomppars` table).
-- **Combined JWST spectrum** — 4411 real native-resolution wavelength points
+- **Combined JWST spectrum** — 4411 native-resolution wavelength points
   spanning NIRISS SOSS, NIRSpec G395H, and MIRI LRS, with the source paper's
   own best-fit inter-instrument offset already applied, from a 2025
   reanalysis investigating whether aerosols/offsets can reconcile the
   MIRI and NIRISS/NIRSpec observations. Released publicly on Zenodo
   ([10.5281/zenodo.16277833](https://doi.org/10.5281/zenodo.16277833)).
 - **Analysis** — `scripts/analyze_spectrum.py` bins the native spectrum for
-  display and directly compares the mean depth in the CO2 absorption band
-  (4.1-4.6 micron) against a nearby continuum window, computing the real
-  significance of any excess. Run it yourself:
+  display and compares the mean depth in the CO2 absorption band
+  (4.1-4.6 micron) against a nearby continuum window. Run it yourself:
 
   ```bash
   pip install -r requirements.txt
@@ -33,20 +33,36 @@ with `python -m http.server` from this directory).
 
 ```text
 index.html              the report webpage
-data/                    real combined JWST spectrum file (Zenodo)
-scripts/analyze_spectrum.py   real binning + CO2-band-vs-continuum analysis
+data/                    combined JWST spectrum file (Zenodo)
+scripts/analyze_spectrum.py   binning + CO2-band-vs-continuum comparison
 figures/                 generated plot + summary_statistics.csv
 ```
 
-## Key finding this repo shows directly -- and doesn't oversell
+## What the numbers show, and what they don't
 
 Using this offset-corrected combined spectrum, the CO2-band mean depth
-exceeds the nearby continuum by only ~4 ppm, at ~0.2 sigma significance —
-statistically indistinguishable from noise. This is the real, honest result
-of this specific comparison; it does not prove CO2 is absent (the original
-2023 claim used NIRISS+NIRSpec alone, without the offset correction applied
-here), but it directly demonstrates why the result remains disputed rather
-than settled.
+exceeds the nearby continuum by only ~4 ppm, at ~0.2σ — statistically
+indistinguishable from noise, and far from the confident detection the
+original 2023 analysis reported using NIRISS+NIRSpec alone, before this
+MIRI cross-check was available. That's a useful, quick diagnostic, not
+a final answer: a two-window comparison isn't a molecular retrieval,
+and the 0.2σ figure treats the underlying native-resolution points as
+independent, when spectral extraction can introduce real correlation
+between neighbors that this simple calculation ignores (which would
+widen, not narrow, the true uncertainty). Independent retrieval-based
+work points the same direction, though — Schmidt et al. (2025) ran a
+full retrieval across many combinations of the data and confirmed
+methane at 4σ while finding no significant evidence for CO2 or DMS in
+almost every combination tested.
+
+## Limitations
+
+This repo's band-vs-continuum statistic and a proper atmospheric
+retrieval are different tools measuring different things; agreement
+between this page's 0.2σ and Schmidt et al.'s more rigorous null result
+is a useful cross-check, not proof that either is definitive on its
+own. See the callout in [index.html](index.html) for the full version
+of this caveat.
 
 ## References
 
@@ -62,7 +78,10 @@ than settled.
 4. Wogan, N. et al., 2024. JWST Reveals CH4, CO2, and H2O in a Metal-rich
    Miscible Atmosphere on a Two-Column Sub-Neptune. *The Astrophysical
    Journal Letters*, 963, L7.
-5. NASA Exoplanet Archive, <https://exoplanetarchive.ipac.caltech.edu/>.
+5. Schmidt, S.J. et al., 2025. Unraveling the non-equilibrium chemistry of
+   the temperate sub-Neptune K2-18 b. *Astronomy & Astrophysics*
+   (arXiv:2507.14983).
+6. NASA Exoplanet Archive, <https://exoplanetarchive.ipac.caltech.edu/>.
 
 ## Author
 
