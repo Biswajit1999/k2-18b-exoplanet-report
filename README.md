@@ -48,9 +48,11 @@ MIRI cross-check was available. That's a useful, quick diagnostic, not
 a final answer: a two-window comparison isn't a molecular retrieval,
 and the 0.2σ figure treats the underlying native-resolution points as
 independent, when spectral extraction can introduce real correlation
-between neighbors that this simple calculation ignores (which would
-widen, not narrow, the true uncertainty). Independent retrieval-based
-work points the same direction, though — Schmidt et al. (2025) ran a
+between neighbors that this simple calculation ignores — depending on
+the sign and structure of that correlation, accounting for it could
+either widen or narrow the true uncertainty, not necessarily widen it.
+Independent retrieval-based work points the same direction, though —
+Schmidt et al. (2025) ran a
 full retrieval across many combinations of the data and confirmed
 methane at 4σ while finding no significant evidence for CO2 or DMS in
 almost every combination tested.
