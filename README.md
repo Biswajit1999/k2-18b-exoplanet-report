@@ -1,5 +1,9 @@
 # K2-18 b — Exoplanet Atmosphere Report
 
+<img src="images/thumbnail.png" alt="Artist's concept of K2-18 b" width="360">
+
+*AI-generated artist's concept — not a real photograph. See the report for actual JWST data.*
+
 The most contested atmosphere in exoplanet science right now: a temperate
 sub-Neptune with a disputed CO2/CH4 detection, a tentative and unconfirmed
 DMS signal, and a live debate about whether combining data from different

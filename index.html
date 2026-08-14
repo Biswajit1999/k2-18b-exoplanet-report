@@ -46,6 +46,9 @@ footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--accent); }
 .callout { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; border-radius: 6px; font-size: .93rem; }
 .callout.warn { border-left-color: #c0562a; background: color-mix(in srgb, var(--accent-soft) 40%, #f6e8dc); }
+.hero-banner { margin: 1.5rem 0 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.hero-banner img { width: 100%; height: auto; max-height: 440px; object-fit: cover; display: block; }
+.ai-credit { color: var(--muted); font-size: .72rem; font-style: italic; margin: .5rem 0 0; }
 </style>
 </head>
 <body>
@@ -60,6 +63,11 @@ footer a:hover { color: var(--accent); }
       <span class="badge">Combined JWST spectrum, 4411 points</span>
     </div>
   </header>
+
+  <div class="hero-banner">
+    <img src="images/hero.png" alt="Artist's concept of the temperate sub-Neptune K2-18 b">
+  </div>
+  <p class="ai-credit">AI-generated artist's concept of K2-18 b — not a real photograph. All data and figures in this report come from actual JWST observations (see below).</p>
 
   <section>
     <h2>The planet, in numbers</h2>
@@ -80,6 +88,10 @@ footer a:hover { color: var(--accent); }
     <h2>Why K2-18 b is contested, not just interesting</h2>
     <p>Madhusudhan et al. (2023) reported JWST NIRISS SOSS and NIRSpec G395H evidence for methane and carbon dioxide in K2-18 b's atmosphere, consistent with a "hycean" scenario (a liquid-water ocean beneath a H2-rich atmosphere) rather than a scaled-down gas giant. The same team later reported a tentative signal attributed to dimethyl sulfide (DMS), a molecule that on Earth is produced almost exclusively by biological processes — reported explicitly as tentative, not a biosignature detection.</p>
     <p>Independent groups have pushed back hard on multiple fronts: some argue the planet's mass and radius are more consistent with a magma-ocean "mini-Neptune" than a temperate ocean world; others argue that combining spectra from different JWST instruments without accounting for small systematic offsets between them can manufacture spurious spectral features — including, potentially, the CO2 signal itself. That second critique is exactly what this repo's data source investigates.</p>
+    <div class="figure">
+      <img src="images/3d-render.png" alt="Close-up 3D-rendered concept of K2-18 b's disputed hycean ocean atmosphere">
+      <p class="ai-credit">AI-generated 3D-render-style concept of the disputed "hycean" ocean-world scenario — not an actual image of the planet, and not evidence for or against that interpretation.</p>
+    </div>
   </section>
 
   <section>
@@ -101,6 +113,10 @@ footer a:hover { color: var(--accent); }
   <section>
     <h2>Data and method notes</h2>
     <p>System parameters come from the NASA Exoplanet Archive TAP service. The spectrum is a reduced JWST data product released publicly on Zenodo (record <a href="https://doi.org/10.5281/zenodo.16277833">10.5281/zenodo.16277833</a>) by a team specifically investigating the MIRI/NIRISS-NIRSpec reconciliation question. See <a href="data/">data/</a> for the raw file and <a href="scripts/analyze_spectrum.py">scripts/analyze_spectrum.py</a> for the exact binning and statistics (<code>python scripts/analyze_spectrum.py</code> to rerun it).</p>
+    <div class="figure">
+      <img src="images/instrument.png" alt="AI-generated illustration of the James Webb Space Telescope">
+      <p class="ai-credit">AI-generated illustration of the James Webb Space Telescope, whose NIRISS, NIRSpec, and MIRI instruments jointly took the real spectrum used in this report. Not an official mission photograph — see <a href="https://www.jwst.nasa.gov/">NASA/JWST</a> for real imagery.</p>
+    </div>
   </section>
 
   <section>
