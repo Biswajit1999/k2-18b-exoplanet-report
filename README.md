@@ -36,6 +36,19 @@ index.html              the report webpage
 data/                    combined JWST spectrum file (Zenodo)
 scripts/analyze_spectrum.py   binning + CO2-band-vs-continuum comparison
 figures/                 generated plot + summary_statistics.csv
+tests/                   unit tests + a regression check against the real data
+```
+
+## Tests
+
+`tests/test_analysis.py` checks the weighted-mean and binning
+functions against hand-computed cases and reruns the full pipeline on
+the real downloaded spectrum, verifying it still reproduces the
+numbers this README documents. Runs automatically on every push via
+GitHub Actions; run locally with:
+
+```bash
+pytest tests/ -v
 ```
 
 ## What the numbers show, and what they don't
