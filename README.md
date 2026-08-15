@@ -1,8 +1,10 @@
 # K2-18 b — Exoplanet Atmosphere Report
 
-<img src="images/thumbnail.png" alt="Artist's concept of K2-18 b" width="360">
+<p align="center">
+  <img src="images/thumbnail.png" alt="Artist's concept of K2-18 b" width="360">
+</p>
 
-*AI-generated artist's concept — not a real photograph. See the report for actual JWST data.*
+<p align="center"><em>AI-generated artist's concept — not a real photograph. See the report for actual JWST data.</em></p>
 
 The most contested atmosphere in exoplanet science right now: a temperate
 sub-Neptune with a disputed CO2/CH4 detection, a tentative and unconfirmed
@@ -11,8 +13,7 @@ JWST instruments manufactures the very feature it claims to find. This repo
 runs a simple band-vs-continuum test against an offset-corrected combined
 spectrum and is explicit about what that test can and can't establish.
 
-**[Open the full report](index.html)** (open locally in a browser, or serve
-with `python -m http.server` from this directory).
+**[Open the full report](https://biswajit1999.github.io/k2-18b-exoplanet-report/)** — the live GitHub Pages version. You can also open `index.html` locally in a browser, or serve it with `python -m http.server` from this directory.
 
 ## Data sources
 
