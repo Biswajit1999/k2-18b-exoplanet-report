@@ -40,3 +40,10 @@ flatness statistic.
 
 These are reduced spectra, not raw detector exposures. The repository does not
 reproduce the upstream extraction or covariance matrix.
+
+## System parameters
+
+`system_parameters_snapshot.json` records the exact NASA Exoplanet Archive TAP
+query and returned composite row used by the public page on 2026-09-23. This
+prevents a future mutable catalogue value from being mistaken for the value
+reviewed in this release.

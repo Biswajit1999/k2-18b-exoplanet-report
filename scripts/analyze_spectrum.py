@@ -260,6 +260,15 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writerows(rows)
 
 
+def save_accessible_svg(fig: plt.Figure, path: Path, title: str) -> None:
+    """Save a deterministic SVG with an explicit accessible root title."""
+    fig.savefig(path, metadata={"Date": None})
+    text = path.read_text(encoding="utf-8")
+    svg_end = text.index(">", text.index("<svg")) + 1
+    text = text[:svg_end] + f"\n <title>{title}</title>" + text[svg_end:]
+    path.write_text(text, encoding="utf-8", newline="\n")
+
+
 def plot_products(study: dict[str, Any], root: Path) -> None:
     nir, miri = study["nir"], study["miri"]
     offset = study["summary"]["miri_dataset"]["display_offset_ppm"] * 1e-6
@@ -292,7 +301,11 @@ def plot_products(study: dict[str, Any], root: Path) -> None:
     ax.grid(alpha=0.2)
     ax.legend(frameon=False, fontsize=8, ncol=2)
     fig.tight_layout()
-    fig.savefig(root / "figures" / "k218b_spectrum_audit.svg", metadata={"Date": None})
+    save_accessible_svg(
+        fig,
+        root / "figures" / "k218b_spectrum_audit.svg",
+        "K2-18 b NIRISS, NIRSpec, and MIRI spectral coverage",
+    )
     plt.close(fig)
 
     rows, loo = study["contrasts"], study["leave_one_out"]
@@ -332,7 +345,11 @@ def plot_products(study: dict[str, Any], root: Path) -> None:
     axes[1].grid(alpha=0.2)
     axes[1].legend(frameon=False)
     fig.tight_layout()
-    fig.savefig(root / "results" / "sensitivity_audit.svg", metadata={"Date": None})
+    save_accessible_svg(
+        fig,
+        root / "results" / "sensitivity_audit.svg",
+        "K2-18 b band-definition and MIRI influence sensitivity audit",
+    )
     plt.close(fig)
 
 
@@ -383,6 +400,26 @@ def write_products(study: dict[str, Any], root: Path = ROOT) -> None:
         writer.writerow(["quantity", "value", "unit"])
         writer.writerows(rows)
     plot_products(study, root)
+    evidence_paths = [
+        root / "figures" / "summary_statistics.csv",
+        root / "figures" / "k218b_spectrum_audit.svg",
+        root / "results" / "band_contrast_multiverse.csv",
+        root / "results" / "miri_flatness_leave_one_out.csv",
+        root / "results" / "result_summary.json",
+        root / "results" / "sensitivity_audit.svg",
+    ]
+    manifest = {
+        "study_id": study["summary"]["study_id"],
+        "hash_definition": "SHA-256 after canonicalizing CRLF/CR text line endings to LF",
+        "implementation_revision": study["summary"]["implementation_revision"],
+        "files": {
+            str(path.relative_to(root)).replace("\\", "/"): canonical_sha256(path)
+            for path in evidence_paths
+        },
+    }
+    (root / "results" / "evidence_manifest.json").write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
 
 
 def main() -> None:

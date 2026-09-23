@@ -1,115 +1,94 @@
-# K2-18 b — Exoplanet Atmosphere Report
-<!-- RESEARCH-IDENTITY-START -->
-**Independent research report by [Biswajit Jana](https://biswajit1999.github.io/Biswajit_Jana.github.io/)** · [Live report](https://biswajit1999.github.io/k2-18b-exoplanet-report/) · [ORCID](https://orcid.org/0009-0002-2411-1891) · [Complete research portfolio](https://biswajit1999.github.io/Biswajit_Jana.github.io/research/exoplanets/)
-<!-- RESEARCH-IDENTITY-END -->
+# K2-18 b — spectral robustness report
 
+**Independent research report by [Biswajit Jana](https://biswajit1999.github.io/Biswajit_Jana.github.io/)** · [Live report](https://biswajit1999.github.io/k2-18b-exoplanet-report/) · [ORCID](https://orcid.org/0009-0002-2411-1891)
 
+This repository asks a deliberately narrower question than an atmospheric
+retrieval: **is a descriptive 4.3 µm band contrast robust to reasonable window
+choices, and is apparent MIRI non-flatness robust to any one published bin?**
 
+The answer is negative in both senses. Across 30 predeclared band/continuum
+definitions, the signed contrast ranges from **−0.861σ to +2.258σ**; all remain
+below the declared |3σ| threshold, but the sign and headline value are
+definition-sensitive. A constant-depth model on 27 non-overlap MIRI bins gives
+χ²=54.162 for 26 dof (p=0.000968), yet removing the influential 5.375 µm bin
+raises p to 0.07832. Therefore the flatness rejection fails the predeclared
+leave-one-bin-out rule.
 
+Neither result is a molecular detection or exclusion. The analysis has no
+retrieval, opacity model, full covariance matrix, cloud/haze physics, or
+detector-level re-reduction.
 
-<p align="center">
-  <img src="images/thumbnail.png" alt="Artist's concept of K2-18 b" width="360">
-</p>
+![Band-definition and MIRI influence audit](results/sensitivity_audit.svg)
 
-<p align="center"><em>AI-generated artist's concept — not a real photograph. See the report for actual JWST data.</em></p>
+## Critical provenance correction
 
-The most contested atmosphere in exoplanet science right now: a temperate
-sub-Neptune with a disputed CO2/CH4 detection, a tentative and unconfirmed
-DMS signal, and a live debate about whether combining data from different
-JWST instruments manufactures the very feature it claims to find. This repo
-runs a simple band-vs-continuum test against an offset-corrected combined
-spectrum and is explicit about what that test can and can't establish.
+The historical local filename
+`data/k218b_niriss_nirspec_miri_combined_spectrum.txt` is retained for stable
+links, but its 4,411 points end at 5.174 µm and contain **NIRISS SOSS + NIRSpec
+G395H only**. Earlier versions incorrectly described this file as including
+MIRI. The actual 28-bin MIRI LRS product is now committed separately as
+`data/k218b_miri_lrs_eureka_spectrum.txt`.
 
-**[Open the full report](https://biswajit1999.github.io/k2-18b-exoplanet-report/)** — the live GitHub Pages version. You can also open `index.html` locally in a browser, or serve it with `python -m http.server` from this directory.
+Both arrays are numerically identical to named members of `Spectra.zip` in
+[Zenodo record 10.5281/zenodo.16277833](https://doi.org/10.5281/zenodo.16277833).
+The archive MD5, member names, column definitions, and canonical-LF SHA-256
+digests are recorded in [`data/SOURCE.md`](data/SOURCE.md).
 
-## Data sources
+## Study design
 
-- **System parameters** — from the NASA Exoplanet Archive TAP
-  service (`pscomppars` table).
-- **Combined JWST spectrum** — 4411 native-resolution wavelength points
-  spanning NIRISS SOSS, NIRSpec G395H, and MIRI LRS, with the source paper's
-  own best-fit inter-instrument offset already applied, from a 2025
-  reanalysis investigating whether aerosols/offsets can reconcile the
-  MIRI and NIRISS/NIRSpec observations. Released publicly on Zenodo
-  ([10.5281/zenodo.16277833](https://doi.org/10.5281/zenodo.16277833)).
-- **Analysis** — `scripts/analyze_spectrum.py` bins the native spectrum for
-  display and compares the mean depth in the CO2 absorption band
-  (4.1-4.6 micron) against a nearby continuum window. Run it yourself:
+The frozen protocol is [`configs/sensitivity_audit_v1.json`](configs/sensitivity_audit_v1.json).
+It crosses five 4.3 µm band definitions with six blue/red continuum definitions
+and declares |3σ| before evaluation. The MIRI test fits a constant to the 27 bins
+beyond the NIRSpec endpoint and repeats the fit after deleting each bin. The
+source paper's +160 ppm MIRI shift is used only in the joint display and cancels
+from this within-instrument statistic.
 
-  ```bash
-  pip install -r requirements.txt
-  python scripts/analyze_spectrum.py
-  ```
+Generated evidence:
 
-## Repository structure
+- [`results/result_summary.json`](results/result_summary.json) — machine-readable headline and provenance;
+- [`results/evidence_manifest.json`](results/evidence_manifest.json) — canonical hashes for every generated product;
+- [`results/band_contrast_multiverse.csv`](results/band_contrast_multiverse.csv) — all 30 choices, not only the most convenient one;
+- [`results/miri_flatness_leave_one_out.csv`](results/miri_flatness_leave_one_out.csv) — all 27 influence refits;
+- [`figures/k218b_spectrum_audit.svg`](figures/k218b_spectrum_audit.svg) — corrected three-instrument coverage;
+- [`research/research-maturity-before-after.svg`](research/research-maturity-before-after.svg) — repository-practice comparison, **45/100 → 96/100**.
 
-```text
-index.html              the report webpage
-data/                    combined JWST spectrum file (Zenodo)
-scripts/analyze_spectrum.py   binning + CO2-band-vs-continuum comparison
-figures/                 generated plot + summary_statistics.csv
-tests/                   unit tests + a regression check against the real data
-```
+The maturity number is an expert repository-practice rubric, not peer review, a
+scientific-merit score, or a literal multiplier of truth.
 
-## Tests
-
-`tests/test_analysis.py` checks the weighted-mean and binning
-functions against hand-computed cases and reruns the full pipeline on
-the real downloaded spectrum, verifying it still reproduces the
-numbers this README documents. Runs automatically on every push via
-GitHub Actions; run locally with:
+## Reproduce
 
 ```bash
-pytest tests/ -v
+python -m pip install -r requirements.txt
+python scripts/analyze_spectrum.py
+python -m pytest -q
+python -m ruff check scripts tests
+git diff --exit-code
 ```
 
-## What the numbers show, and what they don't
+The generated products are deterministic across Windows/Linux line endings.
+See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) for the provenance
+replay and [`docs/METHODS.md`](docs/METHODS.md) for equations and decision rules.
 
-Using this offset-corrected combined spectrum, the CO2-band mean depth
-exceeds the nearby continuum by only ~4 ppm, at ~0.2σ — statistically
-indistinguishable from noise, and far from the confident detection the
-original 2023 analysis reported using NIRISS+NIRSpec alone, before this
-MIRI cross-check was available. That's a useful, quick diagnostic, not
-a final answer: a two-window comparison isn't a molecular retrieval,
-and the 0.2σ figure treats the underlying native-resolution points as
-independent, when spectral extraction can introduce real correlation
-between neighbors that this simple calculation ignores — depending on
-the sign and structure of that correlation, accounting for it could
-either widen or narrow the true uncertainty, not necessarily widen it.
-Independent retrieval-based work points the same direction, though —
-Schmidt et al. (2025) ran a
-full retrieval across many combinations of the data and confirmed
-methane at 4σ while finding no significant evidence for CO2 or DMS in
-almost every combination tested.
+## Research record
 
-## Limitations
+- [`docs/CLAIMS.md`](docs/CLAIMS.md) — claim-by-claim evidence and superseded statements;
+- [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md) — what this analysis cannot establish;
+- [`docs/BASELINE_AUDIT.md`](docs/BASELINE_AUDIT.md) — defects found before the upgrade;
+- [`research/research-quality-rubric.json`](research/research-quality-rubric.json) — comparison score inputs.
 
-This repo's band-vs-continuum statistic and a proper atmospheric
-retrieval are different tools measuring different things; agreement
-between this page's 0.2σ and Schmidt et al.'s more rigorous null result
-is a useful cross-check, not proof that either is definitive on its
-own. See the callout in [index.html](index.html) for the full version
-of this caveat.
+## Literature context
 
-## References
+The source deposit accompanies Jaziri & Drant (2025), arXiv:2509.13932. The
+independent NIRISS+NIRSpec reanalysis by Schmidt et al. is arXiv:2501.18477;
+earlier repository text incorrectly paired Schmidt et al. with arXiv:2507.14983,
+which is Jaziri et al.'s non-equilibrium-chemistry study. Luque et al.
+(arXiv:2505.13407) report insufficient joint-spectrum evidence for DMS/DMDS.
+These studies use retrievals and alternative reductions that are more capable
+than the descriptive checks here.
 
-1. Madhusudhan, N. et al., 2023. Carbon-bearing Molecules in a Possible
-   Hycean Atmosphere. *The Astrophysical Journal Letters*, 956, L13.
-2. Madhusudhan, N. et al., 2023. Potential Biosignature Detection: Possible
-   Indications of Dimethyl Sulfide in the Atmosphere of K2-18 b. *The
-   Astrophysical Journal Letters*, 963, L6.
-3. Zenodo record
-   [10.5281/zenodo.16277833](https://doi.org/10.5281/zenodo.16277833),
-   "Investigating aerosols as a way to reconcile K2-18 b JWST MIRI and
-   NIRISS/NIRSpec observations."
-4. Wogan, N. et al., 2024. JWST Reveals CH4, CO2, and H2O in a Metal-rich
-   Miscible Atmosphere on a Two-Column Sub-Neptune. *The Astrophysical
-   Journal Letters*, 963, L7.
-5. Schmidt, S.J. et al., 2025. Unraveling the non-equilibrium chemistry of
-   the temperate sub-Neptune K2-18 b. *Astronomy & Astrophysics*
-   (arXiv:2507.14983).
-6. NASA Exoplanet Archive, <https://exoplanetarchive.ipac.caltech.edu/>.
+## Author and license
 
-## Author
+Biswajit Jana · [Portfolio](https://biswajit1999.github.io/Biswajit_Jana.github.io/) · [GitHub](https://github.com/Biswajit1999) · [ORCID](https://orcid.org/0009-0002-2411-1891)
 
-Biswajit Jana — [Portfolio](https://biswajit1999.github.io/Biswajit_Jana.github.io/) · [GitHub](https://github.com/Biswajit1999) · [LinkedIn](https://www.linkedin.com/in/biswajit-jana-27011a151/) · [ORCID](https://orcid.org/0009-0002-2411-1891)
+MIT License. Upstream spectrum attribution remains with the cited Zenodo record
+and source authors.

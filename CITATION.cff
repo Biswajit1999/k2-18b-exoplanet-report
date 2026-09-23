@@ -1,7 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this analysis or its code, please cite the repository and its archived data sources."
-title: "K2-18 b — A Band-Contrast Test on the Hycean Debate"
+title: "K2-18 b — Spectral Robustness Audit"
 type: software
+version: 1.0.0
+date-released: 2026-09-23
 authors:
   - family-names: Jana
     given-names: Biswajit
@@ -9,3 +11,9 @@ authors:
 repository-code: https://github.com/Biswajit1999/k2-18b-exoplanet-report
 url: https://biswajit1999.github.io/k2-18b-exoplanet-report/
 license: MIT
+keywords:
+  - exoplanet atmosphere
+  - JWST
+  - robustness analysis
+  - sensitivity analysis
+  - reproducible research

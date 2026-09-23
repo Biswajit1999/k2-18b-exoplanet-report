@@ -1,0 +1,13 @@
+{
+  "files": {
+    "figures/k218b_spectrum_audit.svg": "f2973092c064f200f887275b09136a5b0b9e43185dc65883922dd2261243eca2",
+    "figures/summary_statistics.csv": "80109f86ba3b32b05bb25c13a753c4848287fedad47f40fb6b6255be56b795f3",
+    "results/band_contrast_multiverse.csv": "6857833a5da49f68016de55f5cb32c3c053e643bd821bb3c766453c2a5e3f08e",
+    "results/miri_flatness_leave_one_out.csv": "0cf64dba4ea3b6f41ac45c49e87c28250336786ce1df5ad3c225188b1eb7f3ac",
+    "results/result_summary.json": "c006e0de66db024ed0223efaabecf901523fec186ce284b303634a8b8768675e",
+    "results/sensitivity_audit.svg": "2c7422c1650d7197176b029316c9ec0af6f9cbc783796aef6d0facfb2b7571fa"
+  },
+  "hash_definition": "SHA-256 after canonicalizing CRLF/CR text line endings to LF",
+  "implementation_revision": "642b75b8db452e2743ebd5e068dcd4ad08c98973",
+  "study_id": "k218b-band-definition-and-miri-influence-v1"
+}

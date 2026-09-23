@@ -98,11 +98,7 @@ def test_configuration_has_unique_ids_and_declared_decisions():
 
 def test_no_page_claims_three_instrument_coverage_for_nir_file_after_upgrade():
     page = (spec.ROOT / "index.html").read_text(encoding="utf-8")
-    if "4411-point NIRISS+NIRSpec spectrum" not in page:
-        pytest.skip(
-            "public-page correction is added after the implementation checkpoint"
-        )
-    assert "4411-point NIRISS+NIRSpec spectrum" in page
+    assert "4,411-point NIRISS+NIRSpec spectrum" in page
     assert (
         "4411 native-resolution points spanning NIRISS SOSS, NIRSpec G395H, and MIRI LRS"
         not in page
