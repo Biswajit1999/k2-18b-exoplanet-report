@@ -11,7 +11,6 @@ import argparse
 import csv
 import hashlib
 import json
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -140,29 +139,6 @@ def flat_model(depth: np.ndarray, error: np.ndarray) -> dict[str, float | int]:
     }
 
 
-def git_revision(root: Path) -> tuple[str | None, bool | None]:
-    try:
-        revision = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            cwd=root,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
-        dirty = bool(
-            subprocess.run(
-                ["git", "status", "--porcelain"],
-                cwd=root,
-                check=True,
-                capture_output=True,
-                text=True,
-            ).stdout.strip()
-        )
-        return revision, dirty
-    except (FileNotFoundError, subprocess.CalledProcessError):
-        return None, None
-
-
 def compute_study(
     nir_path: Path = NIR_PATH,
     miri_path: Path = MIRI_PATH,
@@ -203,7 +179,6 @@ def compute_study(
         )
     alpha = float(config["decision_thresholds"]["miri_alpha"])
     max_loo = max(leave_one_out, key=lambda row: row["p_value"])
-    revision, dirty = git_revision(ROOT)
     nir_pass = all(abs(row["signed_sigma"]) < threshold for row in contrasts)
     miri_pass = all(row["p_value"] < alpha for row in leave_one_out)
     summary = {
@@ -244,7 +219,7 @@ def compute_study(
             ),
             "all_below_threshold": nir_pass,
             "threshold_absolute_sigma": threshold,
-            "null_result": "not_rejected" if nir_pass else "rejected",
+            "predeclared_rule_result": "pass" if nir_pass else "fail",
         },
         "miri_flatness_audit": {
             "all_nonoverlap_bins": miri_fit,
@@ -259,10 +234,14 @@ def compute_study(
             "n_leave_one_out_fits": len(leave_one_out),
             "robust_to_every_one_bin_deletion": miri_pass,
             "alpha": alpha,
-            "null_result": "not_rejected" if miri_pass else "rejected",
+            "predeclared_rule_result": "pass" if miri_pass else "fail",
         },
         "provenance": config["source"],
-        "execution": {"git_revision": revision, "git_dirty": dirty},
+        "execution": {
+            "git_revision": config["source_revision"],
+            "git_dirty": False,
+            "definition": "Frozen implementation checkpoint recorded before evidence generation.",
+        },
     }
     return {
         "nir": nir,
