@@ -209,6 +209,7 @@ def compute_study(
     summary = {
         "study_id": config["study_id"],
         "generated_date": config["generated_date"],
+        "implementation_revision": config["source_revision"],
         "research_question": config["research_question"],
         "scope": "Descriptive sensitivity and influence audit; not an atmospheric retrieval or molecular detection test.",
         "nir_dataset": {
