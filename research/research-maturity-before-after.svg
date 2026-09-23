@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">K2-18 b report research maturity before and after upgrade</title>
+  <desc id="desc">Ten paired horizontal bars compare the repository-practice audit before and after the upgrade. Total score rises from 45 to 96 out of 100.</desc>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <text x="64" y="62" font-family="system-ui,sans-serif" font-size="30" font-weight="700" fill="#0f172a">Research-practice maturity audit</text>
+  <text x="64" y="94" font-family="system-ui,sans-serif" font-size="16" fill="#475569">K2-18 b report · expert heuristic, not peer review or a scientific-merit score</text>
+  <rect x="820" y="39" width="136" height="54" rx="10" fill="#fff7ed"/><text x="888" y="73" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#9a3412">45 before</text>
+  <rect x="972" y="39" width="164" height="54" rx="10" fill="#ecfeff"/><text x="1054" y="73" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#155e75">96 after</text>
+  <g font-family="system-ui,sans-serif" font-size="14" fill="#334155">
+    <text x="64" y="146">Question and falsifiers</text><text x="64" y="200">Method validity</text><text x="64" y="254">Data provenance</text><text x="64" y="308">Uncertainty and robustness</text><text x="64" y="362">Reproducibility</text><text x="64" y="416">Testing and CI</text><text x="64" y="470">Machine-readable evidence</text><text x="64" y="524">Claim discipline</text><text x="64" y="578">Documentation</text><text x="64" y="632">Public verification</text>
+  </g>
+  <g fill="#e2e8f0">
+    <rect x="310" y="124" width="800" height="14" rx="7"/><rect x="310" y="178" width="800" height="14" rx="7"/><rect x="310" y="232" width="800" height="14" rx="7"/><rect x="310" y="286" width="800" height="14" rx="7"/><rect x="310" y="340" width="800" height="14" rx="7"/><rect x="310" y="394" width="800" height="14" rx="7"/><rect x="310" y="448" width="800" height="14" rx="7"/><rect x="310" y="502" width="800" height="14" rx="7"/><rect x="310" y="556" width="800" height="14" rx="7"/><rect x="310" y="610" width="800" height="14" rx="7"/>
+  </g>
+  <g fill="#c2410c">
+    <rect x="310" y="124" width="480" height="6" rx="3"/><rect x="310" y="178" width="400" height="6" rx="3"/><rect x="310" y="232" width="400" height="6" rx="3"/><rect x="310" y="286" width="320" height="6" rx="3"/><rect x="310" y="340" width="400" height="6" rx="3"/><rect x="310" y="394" width="480" height="6" rx="3"/><rect x="310" y="448" width="320" height="6" rx="3"/><rect x="310" y="502" width="320" height="6" rx="3"/><rect x="310" y="556" width="240" height="6" rx="3"/><rect x="310" y="610" width="240" height="6" rx="3"/>
+  </g>
+  <g fill="#0e7490">
+    <rect x="310" y="132" width="800" height="6" rx="3"/><rect x="310" y="186" width="720" height="6" rx="3"/><rect x="310" y="240" width="800" height="6" rx="3"/><rect x="310" y="294" width="720" height="6" rx="3"/><rect x="310" y="348" width="800" height="6" rx="3"/><rect x="310" y="402" width="800" height="6" rx="3"/><rect x="310" y="456" width="800" height="6" rx="3"/><rect x="310" y="510" width="720" height="6" rx="3"/><rect x="310" y="564" width="720" height="6" rx="3"/><rect x="310" y="618" width="800" height="6" rx="3"/>
+  </g>
+  <g font-family="ui-monospace,monospace" font-size="13" fill="#475569">
+    <text x="1125" y="137">6→10</text><text x="1125" y="191">5→9</text><text x="1125" y="245">5→10</text><text x="1125" y="299">4→9</text><text x="1125" y="353">5→10</text><text x="1125" y="407">6→10</text><text x="1125" y="461">4→10</text><text x="1125" y="515">4→9</text><text x="1125" y="569">3→9</text><text x="1125" y="623">3→10</text>
+  </g>
+  <text x="64" y="686" font-family="system-ui,sans-serif" font-size="14" fill="#64748b">Orange = baseline · Teal = upgraded · Full rubric: research/research-quality-rubric.json</text>
+</svg>

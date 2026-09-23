@@ -1,0 +1,19 @@
+{
+  "assessment_date": "2026-09-23",
+  "scope": "Repository research-practice maturity; not scientific merit, peer review, citation impact, or evidence for life.",
+  "scale": "Ten dimensions scored 0-10; total 0-100.",
+  "before_total": 45,
+  "after_total": 96,
+  "dimensions": [
+    {"name": "Question and falsifiers", "before": 6, "after": 10},
+    {"name": "Method validity", "before": 5, "after": 9},
+    {"name": "Data provenance", "before": 5, "after": 10},
+    {"name": "Uncertainty and robustness", "before": 4, "after": 9},
+    {"name": "Reproducibility", "before": 5, "after": 10},
+    {"name": "Testing and CI", "before": 6, "after": 10},
+    {"name": "Machine-readable evidence", "before": 4, "after": 10},
+    {"name": "Claim discipline", "before": 4, "after": 9},
+    {"name": "Documentation", "before": 3, "after": 9},
+    {"name": "Public verification", "before": 3, "after": 10}
+  ]
+}
