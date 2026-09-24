@@ -260,7 +260,7 @@ def compute_study(
 def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -407,7 +407,7 @@ def write_products(study: dict[str, Any], root: Path = ROOT) -> None:
     with (root / "figures" / "summary_statistics.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["quantity", "value", "unit"])
         writer.writerows(rows)
     plot_products(study, root)
