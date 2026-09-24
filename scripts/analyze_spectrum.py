@@ -36,6 +36,11 @@ class Spectrum:
     half_width: np.ndarray | None = None
 
 
+def stable_float(value: float) -> float:
+    """Round numerical products to 12 significant digits across BLAS/platforms."""
+    return float(f"{float(value):.12g}")
+
+
 def canonical_sha256(path: Path) -> str:
     payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
     return hashlib.sha256(payload).hexdigest()
@@ -119,9 +124,9 @@ def band_contrast(
         "continuum_hi_micron": continuum["hi"],
         "band_points": int(band_mask.sum()),
         "continuum_points": int(cont_mask.sum()),
-        "contrast_ppm": difference * 1e6,
-        "contrast_error_ppm": difference_error * 1e6,
-        "signed_sigma": difference / difference_error,
+        "contrast_ppm": stable_float(difference * 1e6),
+        "contrast_error_ppm": stable_float(difference_error * 1e6),
+        "signed_sigma": stable_float(difference / difference_error),
     }
 
 
@@ -130,12 +135,12 @@ def flat_model(depth: np.ndarray, error: np.ndarray) -> dict[str, float | int]:
     statistic = float(np.sum(np.square((depth - mean) / error)))
     dof = int(depth.size - 1)
     return {
-        "weighted_mean_ppm": mean * 1e6,
-        "weighted_mean_error_ppm": mean_error * 1e6,
-        "chi_square": statistic,
+        "weighted_mean_ppm": stable_float(mean * 1e6),
+        "weighted_mean_error_ppm": stable_float(mean_error * 1e6),
+        "chi_square": stable_float(statistic),
         "degrees_of_freedom": dof,
-        "reduced_chi_square": statistic / dof,
-        "p_value": float(chi2.sf(statistic, dof)),
+        "reduced_chi_square": stable_float(statistic / dof),
+        "p_value": stable_float(chi2.sf(statistic, dof)),
     }
 
 
@@ -190,16 +195,16 @@ def compute_study(
         "nir_dataset": {
             "instruments": ["NIRISS SOSS", "NIRSpec G395H"],
             "n_points": int(nir.wavelength.size),
-            "wavelength_min_micron": float(nir.wavelength.min()),
-            "wavelength_max_micron": float(nir.wavelength.max()),
+            "wavelength_min_micron": stable_float(nir.wavelength.min()),
+            "wavelength_max_micron": stable_float(nir.wavelength.max()),
             "canonical_sha256": canonical_sha256(nir_path),
         },
         "miri_dataset": {
             "instrument": "MIRI LRS",
             "n_published_bins": int(miri_all.wavelength.size),
             "n_nonoverlap_bins": int(miri.wavelength.size),
-            "wavelength_min_micron": float(miri_all.wavelength.min()),
-            "wavelength_max_micron": float(miri_all.wavelength.max()),
+            "wavelength_min_micron": stable_float(miri_all.wavelength.min()),
+            "wavelength_max_micron": stable_float(miri_all.wavelength.max()),
             "canonical_sha256": canonical_sha256(miri_path),
             "display_offset_ppm": float(config["miri_offset_ppm_for_display"]),
         },
