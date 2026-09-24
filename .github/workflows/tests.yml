@@ -25,5 +25,10 @@ jobs:
       - run: python -m ruff check scripts tests
       - run: python -m pytest -q
       - run: python scripts/analyze_spectrum.py
-      - name: Require deterministic evidence
-        run: git diff --exit-code
+      - name: Require deterministic numerical evidence
+        run: >-
+          git diff --exit-code --
+          figures/summary_statistics.csv
+          results/band_contrast_multiverse.csv
+          results/miri_flatness_leave_one_out.csv
+          results/result_summary.json
