@@ -26,10 +26,10 @@
   "execution": {
     "definition": "Frozen implementation checkpoint recorded before evidence generation.",
     "git_dirty": false,
-    "git_revision": "dfb72b3e0211445a245fd1efdb20432308fa1b5c"
+    "git_revision": "3283d5e6657a1f6ae5ea28e570fda7d89f0d4c43"
   },
   "generated_date": "2026-09-23",
-  "implementation_revision": "dfb72b3e0211445a245fd1efdb20432308fa1b5c",
+  "implementation_revision": "3283d5e6657a1f6ae5ea28e570fda7d89f0d4c43",
   "miri_dataset": {
     "canonical_sha256": "1b0959ba7513ee2c4ff14b8c6060cec05670a547d85f1fd99b8a6fb6eae0e7c2",
     "display_offset_ppm": 160.0,

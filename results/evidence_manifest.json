@@ -1,13 +1,13 @@
 {
   "files": {
-    "figures/k218b_spectrum_audit.svg": "f2973092c064f200f887275b09136a5b0b9e43185dc65883922dd2261243eca2",
+    "figures/k218b_spectrum_audit.svg": "e6020ef4398580d0983c5903b75f0ddcfe7b45fe88e7a22624b9d29b9d72b098",
     "figures/summary_statistics.csv": "80109f86ba3b32b05bb25c13a753c4848287fedad47f40fb6b6255be56b795f3",
     "results/band_contrast_multiverse.csv": "e4e303423e4373b28748c672f85154b46acb5b608346f9cc2dc1e90a77df4769",
     "results/miri_flatness_leave_one_out.csv": "3028fe21d04bb76620921567448ca39ee300111a1a93820be431b82a5e6a8ae7",
-    "results/result_summary.json": "abfebeb75c98dabc4bee338d3e522b61f1dc7a0763dde290475ac6fa590166d3",
-    "results/sensitivity_audit.svg": "2c7422c1650d7197176b029316c9ec0af6f9cbc783796aef6d0facfb2b7571fa"
+    "results/result_summary.json": "40aeb4107d7c449b035abc266d03b15c8b4f522a30a41b84c3a8ff907e13f6fe",
+    "results/sensitivity_audit.svg": "ee92ba0acfec69248595213c189388c23b4832a29051cb4edf7872c37262c7b2"
   },
   "hash_definition": "SHA-256 after canonicalizing CRLF/CR text line endings to LF",
-  "implementation_revision": "dfb72b3e0211445a245fd1efdb20432308fa1b5c",
+  "implementation_revision": "3283d5e6657a1f6ae5ea28e570fda7d89f0d4c43",
   "study_id": "k218b-band-definition-and-miri-influence-v1"
 }
