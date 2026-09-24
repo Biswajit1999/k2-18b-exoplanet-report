@@ -1,7 +1,7 @@
 {
   "study_id": "k218b-band-definition-and-miri-influence-v1",
   "generated_date": "2026-09-23",
-  "source_revision": "3283d5e6657a1f6ae5ea28e570fda7d89f0d4c43",
+  "source_revision": "82d53f44b0e6c1f460232531c3bfac4035d3b172",
   "research_question": "Does the descriptive 4.3 micron CO2-band contrast remain below 3 sigma across declared wavelength-window choices, and is MIRI non-flatness robust to deletion of any one published bin?",
   "hypotheses": {
     "nir_null": "Every declared CO2-band/continuum contrast has absolute diagonal-error significance below 3 sigma.",
