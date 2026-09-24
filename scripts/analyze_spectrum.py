@@ -267,7 +267,13 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def save_accessible_svg(fig: plt.Figure, path: Path, title: str) -> None:
     """Save a deterministic SVG with an explicit accessible root title."""
-    fig.savefig(path, metadata={"Date": None})
+    fig.savefig(
+        path,
+        metadata={
+            "Creator": "Biswajit Jana / deterministic K2-18 b audit",
+            "Date": None,
+        },
+    )
     text = path.read_text(encoding="utf-8")
     svg_end = text.index(">", text.index("<svg")) + 1
     text = text[:svg_end] + f"\n <title>{title}</title>" + text[svg_end:]
