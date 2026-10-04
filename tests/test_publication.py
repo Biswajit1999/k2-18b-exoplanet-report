@@ -14,9 +14,8 @@ def test_public_page_exposes_results_and_boundaries():
         "0.0783",
         "Neither calculation identifies any molecule",
         "results/sensitivity_audit.svg",
-        "research/research-maturity-before-after.svg",
     ]
-    for marker in required[:-1]:
+    for marker in required:
         assert marker in page
     assert (
         "4411 native-resolution points spanning NIRISS SOSS, NIRSpec G395H, and MIRI LRS"
@@ -36,27 +35,10 @@ def test_system_parameter_snapshot_preserves_query_and_uncertainties():
     assert payload["row"]["pl_radeerr2"] == -0.22
 
 
-def test_maturity_rubric_totals_are_computed_from_dimensions():
-    payload = json.loads(
-        (spec.ROOT / "research" / "research-quality-rubric.json").read_text()
-    )
-    assert (
-        sum(row["before"] for row in payload["dimensions"])
-        == payload["before_total"]
-        == 45
-    )
-    assert (
-        sum(row["after"] for row in payload["dimensions"])
-        == payload["after_total"]
-        == 96
-    )
-
-
 def test_svg_evidence_is_accessible_and_free_of_timestamp_metadata():
     for path in [
         spec.ROOT / "figures" / "k218b_spectrum_audit.svg",
         spec.ROOT / "results" / "sensitivity_audit.svg",
-        spec.ROOT / "research" / "research-maturity-before-after.svg",
     ]:
         text = path.read_text(encoding="utf-8")
         assert "<svg" in text

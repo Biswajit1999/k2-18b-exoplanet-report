@@ -49,8 +49,7 @@ Generated evidence:
 - [`results/evidence_manifest.json`](results/evidence_manifest.json) — canonical hashes for every generated product;
 - [`results/band_contrast_multiverse.csv`](results/band_contrast_multiverse.csv) — all 30 choices, not only the most convenient one;
 - [`results/miri_flatness_leave_one_out.csv`](results/miri_flatness_leave_one_out.csv) — all 27 influence refits;
-- [`figures/k218b_spectrum_audit.svg`](figures/k218b_spectrum_audit.svg) — corrected three-instrument coverage;
-- [`research/research-maturity-before-after.svg`](research/research-maturity-before-after.svg) — repository-practice comparison, **45/100 → 96/100**.
+- [`figures/k218b_spectrum_audit.svg`](figures/k218b_spectrum_audit.svg) — corrected three-instrument coverage.
 
 The maturity number is an expert repository-practice rubric, not peer review, a
 scientific-merit score, or a literal multiplier of truth.
@@ -73,8 +72,7 @@ replay and [`docs/METHODS.md`](docs/METHODS.md) for equations and decision rules
 
 - [`docs/CLAIMS.md`](docs/CLAIMS.md) — claim-by-claim evidence and superseded statements;
 - [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md) — what this analysis cannot establish;
-- [`docs/BASELINE_AUDIT.md`](docs/BASELINE_AUDIT.md) — defects found before the upgrade;
-- [`research/research-quality-rubric.json`](research/research-quality-rubric.json) — comparison score inputs.
+- [`docs/BASELINE_AUDIT.md`](docs/BASELINE_AUDIT.md) — defects found before the upgrade.
 
 ## Literature context
 

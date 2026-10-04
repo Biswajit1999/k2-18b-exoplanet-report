@@ -21,7 +21,3 @@ headline from being treated as strong research evidence.
    manifest.
 6. CI exercised one Python version, used floating action tags, did not lint, and
    did not verify that generated evidence was current.
-
-Baseline maturity: **45/100** on the repository-practice rubric in
-`research/research-quality-rubric.json`. This number is an expert heuristic,
-not peer review or a measurement of scientific truth.
