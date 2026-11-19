@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "project": "K2-18 b — spectral robustness report",
+  "repository": "https://github.com/Biswajit1999/k2-18b-exoplanet-report",
+  "files": [
+    {
+      "label": "Data source notes",
+      "path": "data/SOURCE.md",
+      "role": "Data and provenance",
+      "bytes": 2156,
+      "sha256": "5b8d896752c8497fec1bcd8aad08816cde15ddd0ffa7503b5e3961fdc9fd1a0e",
+      "hash_basis": "LF-normalised text",
+      "format": "MD"
+    },
+    {
+      "label": "Project claims",
+      "path": "docs/CLAIMS.md",
+      "role": "Data and provenance",
+      "bytes": 1621,
+      "sha256": "d8993dd4af23381c6a04d814071c1d32bc3a1e2dbb159b772a6fc5ef8c056195",
+      "hash_basis": "LF-normalised text",
+      "format": "MD"
+    },
+    {
+      "label": "Project methods",
+      "path": "docs/METHODS.md",
+      "role": "Data and provenance",
+      "bytes": 2169,
+      "sha256": "7bbb9be29b3eed52a4ff66880ac1074fae586540d8c4d82fd99a8dd5b7c4b96f",
+      "hash_basis": "LF-normalised text",
+      "format": "MD"
+    },
+    {
+      "label": "K218b miri lrs eureka spectrum",
+      "path": "data/k218b_miri_lrs_eureka_spectrum.txt",
+      "role": "Data and provenance",
+      "bytes": 2800,
+      "sha256": "1b0959ba7513ee2c4ff14b8c6060cec05670a547d85f1fd99b8a6fb6eae0e7c2",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "K218b niriss nirspec miri combined spectrum",
+      "path": "data/k218b_niriss_nirspec_miri_combined_spectrum.txt",
+      "role": "Data and provenance",
+      "bytes": 330825,
+      "sha256": "0622a1761cbd1e8f920425fd0b54b9489517f66f0a885ed8190cfc0471aedf24",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "System parameters snapshot",
+      "path": "data/system_parameters_snapshot.json",
+      "role": "Data and provenance",
+      "bytes": 951,
+      "sha256": "c3e9003443f2501789309238121acc6dcfe8a2143a50945f48f1044dd80d07c9",
+      "hash_basis": "LF-normalised text",
+      "format": "JSON",
+      "keys": [
+        "retrieved_utc_date",
+        "service",
+        "table",
+        "query",
+        "row"
+      ],
+      "arrays": {}
+    },
+    {
+      "label": "Summary statistics",
+      "path": "figures/summary_statistics.csv",
+      "role": "Tables and numerical results",
+      "bytes": 315,
+      "sha256": "80109f86ba3b32b05bb25c13a753c4848287fedad47f40fb6b6255be56b795f3",
+      "hash_basis": "LF-normalised text",
+      "format": "CSV",
+      "rows": 8,
+      "columns": 3,
+      "headers": [
+        "quantity",
+        "value",
+        "unit"
+      ],
+      "preview": [
+        [
+          "nir_native_points",
+          "4411",
+          "count"
+        ],
+        [
+          "miri_published_bins",
+          "28",
+          "count"
+        ],
+        [
+          "miri_nonoverlap_bins",
+          "27",
+          "count"
+        ],
+        [
+          "primary_co2_band_excess",
+          "4.1",
+          "ppm"
+        ]
+      ]
+    },
+    {
+      "label": "Result summary",
+      "path": "results/result_summary.json",
+      "role": "Tables and numerical results",
+      "bytes": 3063,
+      "sha256": "5be5039027af257ea30b9fa92e67184fe508bfc878ed3adc490f2228938e1398",
+      "hash_basis": "LF-normalised text",
+      "format": "JSON",
+      "keys": [
+        "band_contrast_audit",
+        "execution",
+        "generated_date",
+        "implementation_revision",
+        "miri_dataset",
+        "miri_flatness_audit",
+        "nir_dataset"
+      ],
+      "arrays": {}
+    },
+    {
+      "label": "Band contrast multiverse",
+      "path": "results/band_contrast_multiverse.csv",
+      "role": "Tables and numerical results",
+      "bytes": 2455,
+      "sha256": "e4e303423e4373b28748c672f85154b46acb5b608346f9cc2dc1e90a77df4769",
+      "hash_basis": "LF-normalised text",
+      "format": "CSV",
+      "rows": 30,
+      "columns": 11,
+      "headers": [
+        "band_id",
+        "band_lo_micron",
+        "band_hi_micron",
+        "continuum_id",
+        "continuum_lo_micron",
+        "continuum_hi_micron",
+        "band_points"
+      ],
+      "preview": [
+        [
+          "B1",
+          "4.05",
+          "4.55",
+          "C1",
+          "3.5",
+          "3.9",
+          "745"
+        ],
+        [
+          "B1",
+          "4.05",
+          "4.55",
+          "C2_primary",
+          "3.6",
+          "3.9",
+          "745"
+        ],
+        [
+          "B1",
+          "4.05",
+          "4.55",
+          "C3",
+          "3.7",
+          "4.0",
+          "745"
+        ],
+        [
+          "B1",
+          "4.05",
+          "4.55",
+          "C4",
+          "3.8",
+          "4.05",
+          "745"
+        ]
+      ]
+    },
+    {
+      "label": "Evidence manifest",
+      "path": "results/evidence_manifest.json",
+      "role": "Tables and numerical results",
+      "bytes": 888,
+      "sha256": "a38b389d16b4138c3dfeb5a11101ff3a1861ccf0c20a4ece2f1f701d0bfe5cc6",
+      "hash_basis": "LF-normalised text",
+      "format": "JSON",
+      "keys": [
+        "files",
+        "hash_definition",
+        "implementation_revision",
+        "study_id"
+      ],
+      "arrays": {}
+    },
+    {
+      "label": "Miri flatness leave one out",
+      "path": "results/miri_flatness_leave_one_out.csv",
+      "role": "Tables and numerical results",
+      "bytes": 2433,
+      "sha256": "3028fe21d04bb76620921567448ca39ee300111a1a93820be431b82a5e6a8ae7",
+      "hash_basis": "LF-normalised text",
+      "format": "CSV",
+      "rows": 27,
+      "columns": 8,
+      "headers": [
+        "removed_index",
+        "removed_wavelength_micron",
+        "weighted_mean_ppm",
+        "weighted_mean_error_ppm",
+        "chi_square",
+        "degrees_of_freedom",
+        "reduced_chi_square"
+      ],
+      "preview": [
+        [
+          "0",
+          "5.375",
+          "2764.3644651",
+          "17.1811594978",
+          "35.5738146129",
+          "25",
+          "1.42295258452"
+        ],
+        [
+          "1",
+          "5.625",
+          "2743.82720257",
+          "16.8606810107",
+          "53.5088681627",
+          "25",
+          "2.14035472651"
+        ],
+        [
+          "2",
+          "5.875",
+          "2727.85614783",
+          "17.1553466655",
+          "49.2242179983",
+          "25",
+          "1.96896871993"
+        ],
+        [
+          "3",
+          "6.125",
+          "2744.63255487",
+          "16.6533127832",
+          "52.6964666593",
+          "25",
+          "2.10785866637"
+        ]
+      ]
+    },
+    {
+      "label": "K218b transmission spectrum",
+      "path": "figures/k218b_transmission_spectrum.png",
+      "role": "Figures",
+      "bytes": 104557,
+      "sha256": "e3cbf7e68dab5086d572dab0b2101b1e01e921373fe9cfbb743f8ddeb532c327",
+      "hash_basis": "exact bytes",
+      "format": "PNG"
+    },
+    {
+      "label": "K218b spectrum audit",
+      "path": "figures/k218b_spectrum_audit.svg",
+      "role": "Figures",
+      "bytes": 74838,
+      "sha256": "e6020ef4398580d0983c5903b75f0ddcfe7b45fe88e7a22624b9d29b9d72b098",
+      "hash_basis": "LF-normalised text",
+      "format": "SVG"
+    },
+    {
+      "label": "Sensitivity audit",
+      "path": "results/sensitivity_audit.svg",
+      "role": "Figures",
+      "bytes": 89371,
+      "sha256": "ee92ba0acfec69248595213c189388c23b4832a29051cb4edf7872c37262c7b2",
+      "hash_basis": "LF-normalised text",
+      "format": "SVG"
+    }
+  ]
+}
