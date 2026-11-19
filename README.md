@@ -20,6 +20,12 @@ detector-level re-reduction.
 
 ![Band-definition and MIRI influence audit](results/sensitivity_audit.svg)
 
+## Research evidence and downloads
+
+[Open the evidence browser](https://biswajit1999.github.io/k2-18b-exoplanet-report/evidence.html) for 14 selected files, including [`summary_statistics.csv`](figures/summary_statistics.csv). Each file has a download link and SHA-256 digest.
+
+Rebuild the inventory and browser with `python scripts/evidence_catalog.py` and `python scripts/render_evidence_page.py`.
+
 ## Critical provenance correction
 
 The historical local filename
