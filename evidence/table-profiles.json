@@ -1,0 +1,224 @@
+{
+  "schema": 1,
+  "project": "K2-18 b — spectral robustness report",
+  "tables": [
+    {
+      "path": "figures/summary_statistics.csv",
+      "label": "Summary statistics",
+      "role": "Tables and numerical results",
+      "rows": 8,
+      "width_mismatches": 0,
+      "columns": [
+        {
+          "name": "quantity",
+          "blank": 0,
+          "text": 8,
+          "finite": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "value",
+          "blank": 0,
+          "text": 0,
+          "finite": 8,
+          "nonfinite": 0,
+          "minimum": 0.00096844,
+          "maximum": 4411.0
+        },
+        {
+          "name": "unit",
+          "blank": 0,
+          "text": 8,
+          "finite": 0,
+          "nonfinite": 0
+        }
+      ]
+    },
+    {
+      "path": "results/band_contrast_multiverse.csv",
+      "label": "Band contrast multiverse",
+      "role": "Tables and numerical results",
+      "rows": 30,
+      "width_mismatches": 0,
+      "columns": [
+        {
+          "name": "band_id",
+          "blank": 0,
+          "text": 30,
+          "finite": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "band_lo_micron",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 4.05,
+          "maximum": 4.2
+        },
+        {
+          "name": "band_hi_micron",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 4.5,
+          "maximum": 4.6
+        },
+        {
+          "name": "continuum_id",
+          "blank": 0,
+          "text": 30,
+          "finite": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "continuum_lo_micron",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 3.5,
+          "maximum": 4.7
+        },
+        {
+          "name": "continuum_hi_micron",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 3.9,
+          "maximum": 5.0
+        },
+        {
+          "name": "band_points",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 447.0,
+          "maximum": 745.0
+        },
+        {
+          "name": "continuum_points",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 278.0,
+          "maximum": 450.0
+        },
+        {
+          "name": "contrast_ppm",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": -17.3823206205,
+          "maximum": 73.3762305946
+        },
+        {
+          "name": "contrast_error_ppm",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": 20.1859270734,
+          "maximum": 34.8277507497
+        },
+        {
+          "name": "signed_sigma",
+          "blank": 0,
+          "text": 0,
+          "finite": 30,
+          "nonfinite": 0,
+          "minimum": -0.861110840106,
+          "maximum": 2.25801655576
+        }
+      ]
+    },
+    {
+      "path": "results/miri_flatness_leave_one_out.csv",
+      "label": "Miri flatness leave one out",
+      "role": "Tables and numerical results",
+      "rows": 27,
+      "width_mismatches": 0,
+      "columns": [
+        {
+          "name": "removed_index",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 0.0,
+          "maximum": 26.0
+        },
+        {
+          "name": "removed_wavelength_micron",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 5.375,
+          "maximum": 11.875
+        },
+        {
+          "name": "weighted_mean_ppm",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 2727.85614783,
+          "maximum": 2764.3644651
+        },
+        {
+          "name": "weighted_mean_error_ppm",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 16.2508020892,
+          "maximum": 17.2327559185
+        },
+        {
+          "name": "chi_square",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 35.5738146129,
+          "maximum": 54.1623328777
+        },
+        {
+          "name": "degrees_of_freedom",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 25.0,
+          "maximum": 25.0
+        },
+        {
+          "name": "reduced_chi_square",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 1.42295258452,
+          "maximum": 2.16649331511
+        },
+        {
+          "name": "p_value",
+          "blank": 0,
+          "text": 0,
+          "finite": 27,
+          "nonfinite": 0,
+          "minimum": 0.000633005948476,
+          "maximum": 0.0783199508278
+        }
+      ]
+    }
+  ],
+  "excluded": []
+}
